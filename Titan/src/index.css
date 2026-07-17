@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/*
+ * Accent colour system.
+ * Tailwind v4 generates `accent-*` utilities (bg-accent-600, text-accent-400,
+ * ring-accent-500, ...) from these tokens. The tokens point at runtime CSS
+ * variables so the accent colour can be swapped live from Settings without a
+ * rebuild. Defaults match the original Cyan palette, so nothing changes visually
+ * until the user picks a different accent.
+ */
+@theme {
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+}
+
+:root {
+  /* Cyan (default) */
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-600: #0891b2;
+  --accent-700: #0e7490;
+}
+
+/*
+ * Compact / density mode. Tailwind spacing is rem-based, so nudging the root
+ * font-size scales padding, gaps and text down uniformly for a denser layout.
+ */
+html.compact {
+  font-size: 14.5px;
+}
+
+/* Respect users who prefer less motion for the GSAP/transition-heavy screens. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
